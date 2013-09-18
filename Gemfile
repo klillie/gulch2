@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 # Use postgresql as the database for Active Record
 gem 'pg'
 gem 'rspec-rails', '2.13.1'
+gem 'rails_12factor', '0.0.2'
 
 group :test do
 	gem 'selenium-webdriver', '2.35.1'
