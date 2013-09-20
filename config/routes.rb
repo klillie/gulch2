@@ -1,7 +1,9 @@
 Gulch2::Application.routes.draw do
   resources :tarifftools
-
-  get "tariff_tools/home"
+  resources :sessions
+  match '/',      to: 'sessions#new',       via: 'get'
+  match '/tool',  to: 'tariff_tools#tool',  via: 'get'
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

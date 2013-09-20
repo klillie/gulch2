@@ -1,0 +1,20 @@
+<h1>Bill Comparison Demo</h1>
+
+<p>
+	This is the page where the Bill Comparison Demo will reside
+</p>
+<p>
+	<% @zip = session[:current_zip] %>
+	Zip Code input: 
+	<%= @zip %>
+</p>
+<p>
+	<!--this is how you comment stuff-->
+	Utility: 
+	<%= TariffUtility.utility(@zip) %>
+</p>
+<p>
+	Territory: 
+	<%= TariffUtility.territory(@zip) %>
+
+</p>

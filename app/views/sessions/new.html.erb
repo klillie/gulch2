@@ -1,0 +1,13 @@
+<h1>Input Zip Code in the New Sessions View!</h1>
+
+<div class="row">
+	<div class="span6 offset3">
+		<%=form_for(:session, url: sessions_path) do |f| %>
+
+			<%= f.label :current_zip %>
+			<%= f.text_field :current_zip, {:value => '07004'} %>
+
+			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
+		<% end %>
+	</div>
+</div>
