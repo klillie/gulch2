@@ -7,14 +7,14 @@ class TariffUtility < ActiveRecord::Base
 	def self.territory(zip)
 		
 		@zip_code_id = TariffZipCode.find_by(zip_code: zip).id
-		@territory_id = TariffTerritoryZipCodeRelationship.find_by(tariff_zip_code_id: @zip_code_id).tariff_territory_id
+		@territory_id = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: @zip_code_id).tariff_territory_id
 		@territory = TariffTerritory.find_by(id: @territory_id).name
 	end
 
 	# Pulls the right utility based on a submitted zip code
 	def self.utility(zip)
 		@zip_code_id = TariffZipCode.find_by(zip_code: zip).id
-		@territory_id = TariffTerritoryZipCodeRelationship.find_by(tariff_zip_code_id: @zip_code_id).tariff_territory_id
+		@territory_id = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: @zip_code_id).tariff_territory_id
 		@utility = TariffUtility.find_by(id: TariffTerritory.find_by(id: @territory_id)).name
 	end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130919163754) do
+ActiveRecord::Schema.define(version: 20130920170214) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20130919163754) do
   add_index "tariff_territories", ["tariff_utility_id"], name: "index_tariff_territories_on_tariff_utility_id", using: :btree
 
   create_table "tariff_territory_zip_code_relationships", force: true do |t|
+    t.integer  "tariff_territory_id"
+    t.integer  "tariff_zip_code_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tariff_territory_zip_code_rels", force: true do |t|
     t.integer  "tariff_territory_id"
     t.integer  "tariff_zip_code_id"
     t.datetime "created_at"
