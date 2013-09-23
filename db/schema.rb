@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923184451) do
+ActiveRecord::Schema.define(version: 20130923190953) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,22 @@ ActiveRecord::Schema.define(version: 20130923184451) do
     t.datetime "updated_at"
   end
 
+  create_table "tariff_indexed_rates", force: true do |t|
+    t.float    "additional_charge"
+    t.integer  "tariff_line_item_id"
+    t.integer  "tariff_iso_rto_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tariff_iso_lmps", force: true do |t|
+    t.string   "iso_rto"
+    t.string   "hub"
+    t.string   "da_rt"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tariff_line_items", force: true do |t|
     t.string   "name"
     t.string   "type"
@@ -66,6 +82,15 @@ ActiveRecord::Schema.define(version: 20130923184451) do
     t.integer  "tariff_tariff_id"
     t.integer  "tariff_season_id"
     t.integer  "bill_group_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tariff_lmp_rates", force: true do |t|
+    t.date     "date"
+    t.time     "time"
+    t.float    "factor"
+    t.integer  "tariff_iso_lmp_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,6 +113,14 @@ ActiveRecord::Schema.define(version: 20130923184451) do
     t.string   "billing_month"
     t.string   "billing_year"
     t.integer  "tariff_territory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tariff_muni_franchise_costs", force: true do |t|
+    t.string   "city"
+    t.float    "rate"
+    t.integer  "tariff_line_item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
