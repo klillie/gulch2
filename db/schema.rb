@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923190953) do
+ActiveRecord::Schema.define(version: 20130924205717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,6 @@ ActiveRecord::Schema.define(version: 20130923190953) do
     t.integer  "order"
     t.integer  "tariff_line_item_id"
     t.integer  "tariff_tariff_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "settlement_load_profiles", force: true do |t|
-    t.string   "date"
-    t.time     "time"
-    t.float    "factor"
-    t.integer  "tariff_load_class_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -125,11 +116,29 @@ ActiveRecord::Schema.define(version: 20130923190953) do
     t.datetime "updated_at"
   end
 
+  create_table "tariff_season", force: true do |t|
+    t.string   "season_type"
+    t.date     "start_date"
+    t.string   "end_date_date"
+    t.integer  "tariff_territory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "tariff_seasons", force: true do |t|
-    t.string   "type"
+    t.string   "season_type"
     t.date     "start_date"
     t.date     "end_date"
     t.integer  "tariff_territory_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tariff_settlement_load_profiles", force: true do |t|
+    t.string   "date"
+    t.time     "time"
+    t.float    "factor"
+    t.integer  "tariff_load_class_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

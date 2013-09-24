@@ -5,16 +5,32 @@
 </p>
 <p>
 	<% @zip = session[:current_zip] %>
-	Zip Code input: 
-	<%= @zip %>
-</p>
-<p>
-	<!--this is how you comment stuff-->
-	Utility: 
-	<%= TariffUtility.utility(@zip) %>
-</p>
-<p>
-	Territory: 
-	<%= TariffUtility.territory(@zip) %>
+	<% @demand = session[:current_demand] %>
+	<% @usage = session[:current_usage] %>
+	<% @date = session[:current_date] %>
+	
 
+	<br> <!-- enters a blank line, ie: line break -->
+	Zip Code input: <%= @zip %>
+
+	<br> <!-- enters a blank line, ie: line break -->
+	Demand (kW) input: <%= @demand %> 
+
+	<br> <!-- enters a blank line, ie: line break -->
+	Usage (kWh) input: <%= @usage %>
+
+	<br> <!-- enters a blank line, ie: line break -->
+	Date input: <%= @date %>
+
+
+</p>
+
+<p>
+	
+	<br> <!-- enters a blank line, ie: line break -->
+	Utility: <%= TariffUtility.utility(@zip) %>
+	<br> <!-- enters a blank line, ie: line break -->
+	Territory: <%= TariffTerritory.territory(@zip) %>
+	<br> <!-- enters a blank line, ie: line break -->
+	Season: <%= TariffSeason.season(@date, @zip) %>
 </p>
