@@ -32,5 +32,13 @@
 	<br> <!-- enters a blank line, ie: line break -->
 	Territory: <%= TariffTerritory.territory(@zip) %>
 	<br> <!-- enters a blank line, ie: line break -->
-	Season: <%= TariffSeason.season(@date, @zip) %>
+	<% @season = TariffSeason.season(@date, @zip) %> 
+	Season: <%= @season[0].season_type %>
+	<br> <!-- enters a blank line, ie: line break -->
+	<% @tou = TariffTou.tou(@date, @zip) %>
+	<% @tou.each do |i| %>
+		Tou <%= i.id %>: <%= i.tou_type %> on <%= i.day_of_week %>, 
+				starts @ <%= i.start_time %> and ends @ <%= i.end_time %>
+		<br> <!-- enters a blank line, ie: line break -->
+	<% end %>
 </p>
