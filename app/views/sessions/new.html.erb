@@ -20,6 +20,11 @@
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.label :bill_date %>
 			<%= f.text_field :current_date, {:value => '9/23/2013'} %>
+
+			<br> <!-- enters a blank line, ie: line break -->
+			<%= f.label :phases %>
+			<%= f.text_field :current_phases, {:value => '3-phase'} %>
+
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>
 		<% end %>

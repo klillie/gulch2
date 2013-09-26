@@ -6,8 +6,8 @@ class CreateTariffBillingClasses < ActiveRecord::Migration
       t.string :phases
       t.string :voltage
       t.string :units
-      t.float :start
-      t.float :end
+      t.float :start_value
+      t.float :end_value
       t.integer :tariff_territory_id
 
       t.timestamps
