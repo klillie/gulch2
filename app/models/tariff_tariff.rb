@@ -1,2 +1,14 @@
 class TariffTariff < ActiveRecord::Base
+	belongs_to :tariff_billing_class
+	has_many :tariff_line_items, 
+				foreign_key: "tariff_tariff_id"
+	validates :tariff_billing_class_id, presence: true
+
+	# Pulls the applicable tariff based on zip, demand, usage, phases
+	def self.tariffs(zip, demand, usage, phases)
+		@billing_class = TariffBillingClass.billing_class(zip, demand, usage, phases)
+		@tariffs = TariffTariff.where('tariff_billing_class_id = ?',
+				@billing_class[0].id)
+	end
+	
 end

@@ -5,8 +5,8 @@ class TariffUtility < ActiveRecord::Base
 
 	# Pulls the utility based on a zip code
 	def self.utility(zip)
-		@territory_id = TariffTerritory.territory_id(zip)
-		@utility = TariffUtility.find_by(id: TariffTerritory.find_by(id: @territory_id)).name
+		@territory = TariffTerritory.territory(zip)
+		@utility = TariffUtility.find_by(id: @territory.tariff_utility_id )
 	end
 
 end

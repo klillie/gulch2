@@ -5,15 +5,21 @@ class TariffTerritory < ActiveRecord::Base
 	validates :tariff_utility_id, presence: true
 
 	# Pulls the territory_id based on a zip code
-	def self.territory_id(zip)
-		@zip_code_id = TariffZipCode.find_by(zip_code: zip).id
-		@territory_id = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: @zip_code_id).tariff_territory_id
-	end
+	#def self.territory_id(zip)
+	#	@zip_code = TariffZipCode.find_by(zip_code: zip)
+	#	@territory_id = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: 
+	#		@zip_code_id).tariff_territory_id
+	#end
 
 	# Pulls the territory based on a zip code
 	def self.territory(zip)
-		@territory_id = TariffTerritory.territory_id(zip)
-		@territory = TariffTerritory.find_by(id: @territory_id).name
+		@zip_code = TariffZipCode.find_by(zip_code: zip)
+		@zip_territory_rel = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: 
+			@zip_code.id)
+		@territory = TariffTerritory.find_by(id: @zip_territory_rel.tariff_territory_id)
+
+		# need to check if more than one record is returned
+
 	end
 	
 end

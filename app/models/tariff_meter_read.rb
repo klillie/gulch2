@@ -4,12 +4,12 @@ class TariffMeterRead < ActiveRecord::Base
 
 	# returns the meter_read definition (start_date, end_date, month_name, billing_year) based on date
 	def self.meter_read(date, zip)
-		@tariff_territory_id = TariffTerritory.territory_id(zip)
+		@tariff_territory = TariffTerritory.territory(zip)
 		@meter_read_start = TariffMeterRead.where('tariff_territory_id = ? AND date <= ?', 
-				@tariff_territory_id, date)
+				@tariff_territory.id, date)
 		@meter_read_start = @meter_read_start.last!
 		@meter_read_end = TariffMeterRead.where('tariff_territory_id = ? AND date > ?', 
-				@tariff_territory_id, date)
+				@tariff_territory.id, date)
 		@meter_read_end = @meter_read_end.first!
 
 		# returns a hash containing [start_date, end_date, month_name, billing_year]
