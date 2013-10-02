@@ -2,6 +2,8 @@ class TariffBillingClass < ActiveRecord::Base
 	belongs_to :tariff_territory
 	has_many :tariff_tariffs, 
 				foreign_key: "tariff_billing_class_id"
+	has_many :tariff_bill_group,
+				foreign_key: "tariff_billing_class_id"
 	validates :tariff_territory_id, presence: true
 
 	# Pulls the billing_class based on zip_code and demand

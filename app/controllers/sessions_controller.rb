@@ -4,11 +4,12 @@ class SessionsController < ApplicationController
 	end
 
 	def create
-		session[:current_zip] = params[:session][:current_zip]
-		session[:current_demand] = params[:session][:current_demand]
-		session[:current_usage] = params[:session][:current_usage]
-		session[:current_date] = params[:session][:current_date]
-		session[:current_phases] = params[:session][:current_phases]
+		session[:zip] = params[:session][:current_zip]
+		session[:demand] = params[:session][:current_demand]
+		session[:usage] = params[:session][:current_usage]
+		session[:date] = params[:session][:current_date]
+		session[:phases] = params[:session][:current_phases]
+
 		redirect_to tool_path
 	end
 

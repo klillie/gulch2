@@ -5,10 +5,9 @@ class TariffTariff < ActiveRecord::Base
 	validates :tariff_billing_class_id, presence: true
 
 	# Pulls the applicable tariff based on zip, demand, usage, phases
-	def self.tariffs(zip, demand, usage, phases)
-		@billing_class = TariffBillingClass.billing_class(zip, demand, usage, phases)
+	def self.tariffs(billing_class)
 		@tariffs = TariffTariff.where('tariff_billing_class_id = ?',
-				@billing_class[0].id)
+				billing_class[0].id)
 	end
 	
 end
