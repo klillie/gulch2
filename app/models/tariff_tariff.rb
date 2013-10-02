@@ -4,7 +4,7 @@ class TariffTariff < ActiveRecord::Base
 				foreign_key: "tariff_tariff_id"
 	validates :tariff_billing_class_id, presence: true
 
-	# Pulls the applicable tariff based on zip, demand, usage, phases
+	# Pulls the applicable tariff based on billing class
 	def self.tariffs(billing_class)
 		@tariffs = TariffTariff.where('tariff_billing_class_id = ?',
 				billing_class[0].id)

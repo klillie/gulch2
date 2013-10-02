@@ -1,11 +1,12 @@
 <h1>Bill Comparison (Demo)</h1>
 
 <p> <!-- gets all the data needed to display the bill -->
-	<% @zip = session[:current_zip] %>
-	<% @demand = session[:current_demand].to_f %>
-	<% @usage = session[:current_usage].to_f %>
-	<% @date = session[:current_date] %>
-	<% @phases = session[:current_phases] %>
+	<% @zip = session[:zip_code] %>
+	<% @demand = session[:demand_in_kW] %>
+	<% @usage = session[:usage_in_kWh] %>
+	<% @date = session[:bill_date] %>
+	<% @phases = session[:phases] %>
+
 	<% @utility = TariffUtility.utility(@zip) %> 
 	<% @territory = TariffTerritory.territory(@zip) %>
 	<% @season = TariffSeason.season(@date, @zip) %> 
@@ -17,6 +18,8 @@
 	<% @bill_groups = TariffBillGroup.bill_groups(@billing_class) %>	
 	
 	<!-- shows the utility and billing period -->
+	<%= @date %>
+	<br> <!-- enters a blank line, ie: line break -->
 	<%= @utility.name %>
 	<br> <!-- enters a blank line, ie: line break -->
 	<strong> Billing Period: <%= @meter_read["start_date"] %> to <%= @meter_read["end_date"] %> </strong>
@@ -68,8 +71,8 @@
 						<td> x </td>	<!-- math symbol -->
 						<td> <%= number_to_currency(i.rate, precision: 3) %> </td> 	<!-- rate -->
 						<td> 
-							<% @bill_group_total += (i.rate * @demand) %>
-							<%= number_to_currency(i.rate * @demand) %> <!-- total -->
+							<% @bill_group_total += (i.rate * @demand.to_f) %>
+							<%= number_to_currency(i.rate * @demand.to_f) %> <!-- total -->
 						</td> 
 					<% when '$/kWh' %>
 						<td> <%= @usage %> </td>	<!-- value -->
@@ -77,8 +80,8 @@
 						<td> x </td>	<!-- math symbol -->
 						<td> <%= number_to_currency(i.rate, precision: 6) %> </td> 	<!-- rate -->
 						<td> 
-							<% @bill_group_total += (i.rate * @usage) %>
-							<%= number_to_currency(i.rate * @usage) %> <!-- total -->
+							<% @bill_group_total += (i.rate * @usage.to_f) %>
+							<%= number_to_currency(i.rate * @usage.to_f) %> <!-- total -->
 						</td> 
 					<% else %>
 						<td> <%= i.line_item_type %> </td>

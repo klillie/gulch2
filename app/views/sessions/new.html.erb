@@ -7,23 +7,23 @@
 
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.label :zip_code %>
-			<%= f.text_field :current_zip, {:value => '07004'} %>
+			<%= f.text_field :zip_code, {:value => '07004'} %>
 
 			<br> <!-- enters a blank line, ie: line break -->
-			<%= f.label :demand_kW %>
-			<%= f.text_field :current_demand, {:value => '100'} %>
+			<%= f.label :demand_in_kW %>
+			<%= f.text_field :demand_in_kW, {:value => '100'} %>
 
 			<br> <!-- enters a blank line, ie: line break -->
-			<%= f.label :usage_kWh %>
-			<%= f.text_field :current_usage, {:value => '10000'} %>
+			<%= f.label :usage_in_kWh %>
+			<%= f.text_field :usage_in_kWh, {:value => '10000'} %>
 
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.label :bill_date %>
-			<%= f.text_field :current_date, {:value => '9/23/2013'} %>
+			<%= f.text_field :bill_date, {:value => '10/1/2013'} %>
 
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.label :phases %>
-			<%= f.text_field :current_phases, {:value => '3-phase'} %>
+			<%= f.text_field :phases, {:value => '3-phase'} %>
 
 			<br> <!-- enters a blank line, ie: line break -->
 			<%= f.submit "Submit", class: "btn btn-large btn-primary" %>

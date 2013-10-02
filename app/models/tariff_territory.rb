@@ -4,13 +4,6 @@ class TariffTerritory < ActiveRecord::Base
 				foreign_key: "tariff_territory_id"
 	validates :tariff_utility_id, presence: true
 
-	# Pulls the territory_id based on a zip code
-	#def self.territory_id(zip)
-	#	@zip_code = TariffZipCode.find_by(zip_code: zip)
-	#	@territory_id = TariffTerritoryZipCodeRel.find_by(tariff_zip_code_id: 
-	#		@zip_code_id).tariff_territory_id
-	#end
-
 	# Pulls the territory based on a zip code
 	def self.territory(zip)
 		@zip_code = TariffZipCode.find_by(zip_code: zip)
