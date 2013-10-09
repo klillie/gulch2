@@ -150,10 +150,11 @@
 		<% end %>
 	</table>
 	<!-- determines the total for that section of the bill -->
+	
 	&nbsp &nbsp &nbsp &nbsp &nbsp Total for <%= j.bill_group_name %> = <%= number_to_currency(@bill_group_total) %>
 	<% @bill_total += @bill_group_total %>
 	<br> <!-- enters a blank line, ie: line break -->
 <% end %>
-<p>
+<h3>
 	Total Bill = <%= number_to_currency(@bill_total) %>
-</p>
+</h3>
